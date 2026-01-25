@@ -1,0 +1,10 @@
+# Kamailio test container for syntax validation
+# The stock ghcr.io/kamailio/kamailio image has a hardcoded ENTRYPOINT
+# that ignores CMD arguments, making it unusable for direct command execution.
+# This Dockerfile clears the entrypoint to allow running kamailio commands directly.
+
+FROM ghcr.io/kamailio/kamailio:6.0.1-noble
+
+# Clear base image entrypoint to allow direct command execution
+ENTRYPOINT []
+CMD ["/bin/bash"]
