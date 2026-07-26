@@ -1,0 +1,18 @@
+# Ubiquitous Language Glossary
+# Query: "What does {term} mean?"
+
+terms:
+  - term: Domain
+    definition: A bounded context representing a specific business capability
+    aliases: [bounded context]
+    related: [Service, Contract]
+
+  - term: Service
+    definition: A deployable unit that implements part of a domain's functionality
+    aliases: [microservice]
+    related: [Domain, Contract]
+
+  - term: Contract
+    definition: An agreement between services about message formats and behaviors
+    aliases: [API contract, message contract]
+    related: [Service, Schema]

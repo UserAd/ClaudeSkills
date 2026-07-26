@@ -1,0 +1,21 @@
+{
+  "name": "architecture",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Architecture documentation",
+  "type": "module",
+  "scripts": {
+    "lint:yaml": "yamllint -c .yamllint.yml registry/*.yaml",
+    "lint:markdown": "markdownlint-cli2 \"**/*.md\" \"!node_modules\"",
+    "lint:mermaid": "node scripts/lint-mermaid.mjs",
+    "lint": "npm run lint:yaml && npm run lint:markdown && npm run lint:mermaid",
+    "validate": "./scripts/validate.sh ."
+  },
+  "devDependencies": {
+    "glob": "^11.0.1",
+    "isomorphic-dompurify": "^2.35.0",
+    "jsdom": "^26.0.0",
+    "markdownlint-cli2": "^0.17.2",
+    "mermaid": "^11.4.1"
+  }
+}

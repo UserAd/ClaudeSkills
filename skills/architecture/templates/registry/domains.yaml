@@ -1,0 +1,15 @@
+# Domain Registry
+# Query: "What services belong to {domain}?"
+
+domains:
+  - id: DOM-EXAMPLE
+    name: Example Domain
+    slug: example-domain
+    description: Short description of what business capability this domain provides
+    owner: team-name
+    services: [SVC-EXAMPLE]
+    depends_on: []
+    docs: domains/example-domain.md
+    diagrams:
+      L2: diagrams/L2/example-domain.mmd
+      L3: diagrams/L3/example-domain.mmd

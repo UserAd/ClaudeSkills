@@ -1,0 +1,34 @@
+# Dependency Graph - GENERATED from contracts/
+# Source: contracts/rabbitmq/*.md, contracts/state/*.md
+# Generator: scripts/generate-dependencies.sh
+# Query: "What breaks if {service} goes down?"
+
+_meta:
+  generated_at: "2025-01-16T10:00:00Z"
+  generator: "scripts/generate-dependencies.sh"
+  sources:
+    - contracts/rabbitmq/*.md
+    - contracts/state/*.md
+    - contracts/http/*.md
+
+graph:
+  SVC-EXAMPLE:
+    consumes:
+      - from: SVC-OTHER
+        protocol: rabbitmq
+        exchange: example_topic
+        routing_keys: [example.event]
+        contract: contracts/rabbitmq/example-topic.md#exampleevent
+    produces:
+      - to: [SVC-CONSUMER]
+        protocol: rabbitmq
+        exchange: example_topic
+        routing_keys: [example.state]
+        schema: schemas/messages/example-state.v1.json
+        contract: contracts/rabbitmq/example-topic.md#examplestate
+    state:
+      reads: [other::*]
+      writes: [example::*]
+      contract: contracts/state/example-state.md
+    databases:
+      reads: [examples, related_table]

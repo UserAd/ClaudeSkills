@@ -1,0 +1,30 @@
+# HTTP API Index - GENERATED from contracts/http/*.md
+# Query: "What endpoints does {service} expose?"
+
+_meta:
+  generated_at: "2025-01-16T10:00:00Z"
+  source: contracts/http/*.md
+
+apis:
+  - service: SVC-EXAMPLE
+    base_path: /api/v1
+    scope: external
+    auth: api_key
+    contract: contracts/http/public-v1.md
+    endpoints:
+      - method: GET
+        path: /examples
+        consumers: [external]
+      - method: POST
+        path: /examples
+        consumers: [external]
+
+  - service: SVC-EXAMPLE
+    base_path: /internal
+    scope: internal
+    auth: jwt
+    contract: contracts/http/internal.md
+    endpoints:
+      - method: GET
+        path: /health
+        consumers: [SVC-ADMIN]

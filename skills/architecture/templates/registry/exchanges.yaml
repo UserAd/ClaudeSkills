@@ -1,0 +1,22 @@
+# RabbitMQ Exchange Index - GENERATED from contracts/rabbitmq/*.md
+# Query: "Who publishes to {exchange}?"
+
+_meta:
+  generated_at: "2025-01-16T10:00:00Z"
+  source: contracts/rabbitmq/*.md
+
+exchanges:
+  - name: example_topic
+    type: topic
+    durable: true
+    primary_owner: SVC-EXAMPLE
+    contract: contracts/rabbitmq/example-topic.md
+    routing_keys:
+      - key: example.state
+        publishers: [SVC-EXAMPLE]
+        consumers: [SVC-CONSUMER]
+        schema: schemas/messages/example-state.v1.json
+      - key: example.event
+        publishers: [SVC-OTHER]
+        consumers: [SVC-EXAMPLE]
+        schema: schemas/messages/example-event.v1.json

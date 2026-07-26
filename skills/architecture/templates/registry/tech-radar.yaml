@@ -1,0 +1,92 @@
+# Technology Radar
+# Model: ThoughtWorks-style (4 rings, 4 quadrants)
+# Query: "What is the status of {technology}?" or "What technologies are on Hold?"
+
+_meta:
+  updated_at: "2025-01-16"
+  updated_by: platform-team
+  review_cadence: quarterly
+
+rings:
+  - id: adopt
+    name: Adopt
+    description: Proven technologies we recommend for production use
+    order: 1
+  - id: trial
+    name: Trial
+    description: Worth pursuing; understand how to build capability
+    order: 2
+  - id: assess
+    name: Assess
+    description: Worth exploring with the goal of understanding impact
+    order: 3
+  - id: hold
+    name: Hold
+    description: Proceed with caution; evaluate alternatives
+    order: 4
+
+quadrants:
+  - id: languages-frameworks
+    name: Languages & Frameworks
+    description: Programming languages and application frameworks
+  - id: platforms
+    name: Platforms
+    description: Databases, message brokers, runtime platforms
+  - id: tools
+    name: Tools
+    description: Development, testing, deployment tools
+  - id: techniques
+    name: Techniques
+    description: Patterns, practices, architectural approaches
+
+entries:
+  # Languages & Frameworks - Adopt
+  - id: TECH-RUBY-3
+    name: Ruby 3.3
+    quadrant: languages-frameworks
+    ring: adopt
+    description: Primary backend language
+    rationale: Stable, well-supported, team expertise
+    used_by: []  # GENERATED from services.yaml
+
+  # Platforms - Adopt
+  - id: TECH-POSTGRES
+    name: PostgreSQL 15
+    quadrant: platforms
+    ring: adopt
+    description: Primary relational database
+    rationale: Robust, feature-rich, proven at scale
+    used_by: []
+
+  - id: TECH-REDIS
+    name: Redis 7
+    quadrant: platforms
+    ring: adopt
+    description: In-memory data store for state and caching
+    rationale: Fast, reliable, well-understood patterns
+    used_by: []
+
+  - id: TECH-RABBITMQ
+    name: RabbitMQ 3.12
+    quadrant: platforms
+    ring: adopt
+    description: Message broker for async communication
+    rationale: Reliable, mature, team expertise
+    used_by: []
+
+  # Tools - Adopt
+  - id: TECH-RSPEC
+    name: RSpec
+    quadrant: tools
+    ring: adopt
+    description: Ruby testing framework
+    rationale: Standard for Ruby services
+    used_by: []
+
+  # Techniques - Adopt
+  - id: TECH-EVENT-DRIVEN
+    name: Event-Driven Architecture
+    quadrant: techniques
+    ring: adopt
+    description: Async messaging between services via RabbitMQ
+    rationale: Decouples services, enables scaling

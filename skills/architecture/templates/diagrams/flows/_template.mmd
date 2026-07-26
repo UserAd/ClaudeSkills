@@ -1,0 +1,25 @@
+%% Flow Diagram: {Flow Name}
+%% Sequence diagram showing cross-domain interaction
+
+sequenceDiagram
+    participant User
+    participant SVC_A as SVC-A
+    participant RabbitMQ
+    participant SVC_B as SVC-B
+    participant Redis
+    participant DB as PostgreSQL
+
+    User->>SVC_A: HTTP Request
+    activate SVC_A
+    SVC_A->>DB: Query data
+    DB-->>SVC_A: Data result
+    SVC_A->>Redis: Update state
+    SVC_A->>RabbitMQ: Publish event
+    SVC_A-->>User: HTTP Response
+    deactivate SVC_A
+
+    RabbitMQ->>SVC_B: Deliver event
+    activate SVC_B
+    SVC_B->>Redis: Read state
+    SVC_B->>DB: Update data
+    deactivate SVC_B

@@ -1,0 +1,30 @@
+# Service Registry
+# Query: "What is {service} status?"
+
+services:
+  - id: SVC-EXAMPLE
+    name: example-service
+    domain: DOM-EXAMPLE
+    status: active                      # active | deprecated | experimental
+    repo: org/example-service
+    docs: services/example-service.md
+    technologies:                       # Links to registry/tech-radar.yaml entries
+      - TECH-RUBY-3
+      - TECH-POSTGRES
+      - TECH-REDIS
+      - TECH-RABBITMQ
+    contracts:
+      rabbitmq: [contracts/rabbitmq/example-exchange.md#svc-example]
+      state: [contracts/state/example-state.md]
+
+  # Example deprecated service
+  # - id: SVC-OLD-EXAMPLE
+  #   name: old-example
+  #   domain: DOM-EXAMPLE
+  #   status: deprecated
+  #   deprecated_at: 2025-01-15
+  #   sunset_at: 2025-04-15
+  #   replacement: SVC-EXAMPLE
+  #   docs: services/old-example.md
+  #   technologies:
+  #     - TECH-RUBY-2

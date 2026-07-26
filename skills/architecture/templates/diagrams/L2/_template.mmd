@@ -1,0 +1,34 @@
+%% L2 Container Diagram: {Domain Name}
+%% C4 Model Level 2 - Container view
+
+graph TB
+    subgraph domain["{Domain Name}"]
+        svc1["{Service 1}<br/>Ruby / Rails"]
+        svc2["{Service 2}<br/>Ruby"]
+    end
+
+    subgraph external["External Systems"]
+        ext1["{External System}"]
+    end
+
+    subgraph data["Data Stores"]
+        db[(PostgreSQL)]
+        redis[(Redis)]
+        rabbit{{RabbitMQ}}
+    end
+
+    %% Connections
+    svc1 --> db
+    svc1 --> redis
+    svc1 --> rabbit
+    svc2 --> rabbit
+    ext1 --> svc1
+
+    %% Styling
+    classDef service fill:#438DD5,stroke:#2E6295,color:#fff
+    classDef database fill:#438DD5,stroke:#2E6295,color:#fff
+    classDef external fill:#999,stroke:#666,color:#fff
+
+    class svc1,svc2 service
+    class db,redis,rabbit database
+    class ext1 external

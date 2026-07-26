@@ -1,0 +1,11 @@
+# System Roles Registry
+# Query: "What are the roles in the system?"
+
+roles:
+  - id: ROLE-SVC-EXAMPLE
+    name: Example Service Role
+    description: Service role for example service
+    permissions:
+      - read:examples
+      - write:examples
+    assigned_to: [SVC-EXAMPLE]

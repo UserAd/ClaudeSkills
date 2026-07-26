@@ -1,0 +1,44 @@
+%% L3 Component Diagram: {Service Name}
+%% C4 Model Level 3 - Component view
+
+graph TB
+    subgraph service["{Service Name}"]
+        subgraph api["API Layer"]
+            ctrl["Controllers"]
+            ws["WebSocket Handlers"]
+        end
+
+        subgraph core["Core"]
+            logic["Business Logic"]
+            models["Models"]
+        end
+
+        subgraph messaging["Messaging"]
+            pub["Publishers"]
+            cons["Consumers"]
+        end
+    end
+
+    subgraph external["External"]
+        rabbit{{RabbitMQ}}
+        redis[(Redis)]
+        db[(PostgreSQL)]
+    end
+
+    %% Connections
+    ctrl --> logic
+    ws --> logic
+    logic --> models
+    logic --> pub
+    cons --> logic
+    pub --> rabbit
+    cons --> rabbit
+    models --> db
+    logic --> redis
+
+    %% Styling
+    classDef component fill:#85BBF0,stroke:#5D82A8,color:#000
+    classDef external fill:#438DD5,stroke:#2E6295,color:#fff
+
+    class ctrl,ws,logic,models,pub,cons component
+    class rabbit,redis,db external

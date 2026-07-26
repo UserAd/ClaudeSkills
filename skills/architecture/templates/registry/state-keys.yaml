@@ -1,0 +1,43 @@
+# State Storage Index - GENERATED from contracts/state/*.md
+# Query: "Who can write to {entity} state?" or "What storage does {service} use?"
+
+_meta:
+  generated_at: "2025-01-16T10:00:00Z"
+  source: contracts/state/*.md
+
+# Supported storage types: redis, postgres, clickhouse, mongodb
+state:
+  # Redis example
+  - entity: example-state
+    storage: redis
+    pattern: "example::{id}"
+    type: hash
+    ttl: null
+    owner: SVC-EXAMPLE
+    readers: [SVC-CONSUMER]
+    contract: contracts/state/example-state.md
+
+  # PostgreSQL example
+  - entity: user-sessions
+    storage: postgres
+    table: user_sessions
+    owner: SVC-AUTH
+    readers: [SVC-API]
+    contract: contracts/state/user-sessions.md
+
+  # ClickHouse example
+  - entity: metrics
+    storage: clickhouse
+    table: metrics
+    engine: ReplacingMergeTree
+    owner: SVC-ANALYTICS
+    readers: [SVC-DASHBOARD]
+    contract: contracts/state/metrics.md
+
+  # MongoDB example
+  - entity: user-profiles
+    storage: mongodb
+    collection: user_profiles
+    owner: SVC-USERS
+    readers: [SVC-API, SVC-WEB]
+    contract: contracts/state/user-profiles.md
